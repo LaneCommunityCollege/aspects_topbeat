@@ -1,0 +1,55 @@
+# {{ ansible_managed }}
+
+output:
+{% if aspects_topbeat_output.logstash is defined and aspects_topbeat_output.logstash != False %}
+  logstash:
+    {{ aspects_topbeat_output.logstash|indent() }}
+{% endif %}
+{% if aspects_topbeat_output.elasticsearch is defined and aspects_topbeat_output.elasticsearch != False %}
+  elasticsearch:
+    {{ aspects_topbeat_output.elasticsearch|indent() }}
+{% endif %}
+{% if aspects_topbeat_shipper is defined and aspects_topbeat_shipper != False %}
+#shipper:
+#  name: {{ aspects_topbeat_shipper.name }}
+#{% if aspects_topbeat_shipper.tags is defined and aspects_topbeat_shipper.tags != False %}
+#  tags: {{ aspects_topbeat_shipper.tags }}
+#{% endif %}
+#{% if aspects_topbeat_shipper.ignore_outgoing is defined and aspects_topbeat_shipper.ignore_outgoing != False %}
+#  ignore_outgoing: {{ aspects_topbeat_shipper.ignore_outgoing }}
+#{% endif %}
+#{% if aspects_topbeat_shipper.refresh_topology_freq is defined and aspects_topbeat_shipper.refresh_topology_freq != False %}
+#  refresh_topology_freq: {{ aspects_topbeat_shipper.refresh_topology_freq }}
+#{% endif %}
+#{% if aspects_topbeat_shipper.topology_expire is defined and aspects_topbeat_shipper.topology_expire != False %}
+#  topology_expire: {{ aspects_topbeat_shipper.topology_expire }}
+#{% endif %}
+#{% if aspects_topbeat_shipper.geoip is defined and aspects_topbeat_shipper.geoip != False %}
+#  {{ aspects_topbeat_shipper.geoip|indent() }}
+#{% endif %}
+#{% if aspects_topbeat_logging is defined %}
+{% endif %}
+{% if aspects_topbeat_logging is defined and aspects_topbeat_logging != False %}
+#logging:
+#  to_syslog: {{ aspects_topbeat_logging.to_syslog|default(true) }}
+#{% if aspects_topbeat_logging.to_files is defined %}
+#  to_files: {{ aspects_topbeat_logging.to_files|default(false) }}
+#{% if aspects_topbeat_logging.to_files is defined and aspects_topbeat_logging.to_files == true %}
+#  files:
+#    path: {{ aspects_topbeat_logging.files.path }}
+#{% if aspects_topbeat_logging.files.rotateeverybytes is defined and aspects_topbeat_logging.files.rotateeverybytes != False %}
+#    rotateeverybytes: {{ aspects_topbeat_logging.files.rotateeverybytes|default(10485760) }}
+#{% endif %}
+#{% if aspects_topbeat_logging.files.keepfiles is defined and  aspects_topbeat_logging.keepfiles != False %}
+#    keepfiles: {{ aspects_topbeat_logging.files.keepfiles|default(7) }}
+#{% endif %}
+#{% endif %}
+#{% if aspects_topbeat_logging.selectors is defined and aspects_topbeat_logging.selectors != False %}
+#  selectors: {{ aspects_topbeat_logging.selectors }}
+#{% endif %}
+#{% if aspects_topbeat_logging.level is defined and aspects_topbeat_logging.level != False %}
+#  level: {{ aspects_topbeat_logging.level }}
+#{% endif %}
+#{% endif %}
+#{% endif %}
+{% endif %}

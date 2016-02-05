@@ -1,0 +1,45 @@
+---
+# defaults file for aspects_topbeat
+aspects_topbeat_enabled: False
+aspects_use_repository: True
+aspects_topbeat_install: False
+aspects_topbeat_repository:
+  Debian:
+    value: "deb https://packages.elastic.co/beats/apt stable main"
+    path: "/etc/apt/sources.list.d/beats.list"
+    key_url: "https://packages.elasticsearch.org/GPG-KEY-elasticsearch"
+  RedHat:
+    value: |
+      [beats]
+      name=Elastic Beats Repository
+      baseurl=https://packages.elastic.co/beats/yum/el/$basearch
+      enabled=1
+      gpgkey=https://packages.elastic.co/GPG-KEY-elasticsearch
+      gpgcheck=1
+    path: "/etc/yum.repos.d/beats.repo"
+    key_url: "https://packages.elastic.co/GPG-KEY-elasticsearch"
+
+aspects_topbeat_input: {}
+#   input:
+#     period: 10
+#     procs: [".*"]
+#     stats:
+#       system: true
+#       proc: true
+#       filesystem: true
+#       cpu_per_core: false
+
+aspects_topbeat_outputs: {}
+#  example: |
+#    enabled: true
+#    hosts: ["http://example.tld:5043"]
+#    tls:
+#      certificate: /path/to/topbeat.crt
+#      certificate_key: /path/to/topbeat.key
+#      certificate_authorities:
+#        - /path/to/topbeatCA.crt
+#    timeout: 15
+
+# aspects_topbeat_shipper: {}
+
+# aspects_topbeat_logging: {}

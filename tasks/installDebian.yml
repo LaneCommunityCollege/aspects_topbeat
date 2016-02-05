@@ -1,0 +1,47 @@
+---
+- name: Install python-apt for use with ansible apt modules.
+  apt:
+    pkg: python-apt
+    state: latest
+    update_cache: "yes"
+  tags:
+  - aspects_topbeat
+  - aspects_topbeat_install
+
+- name: Check for repository
+  stat:
+    path: "{{ aspects_topbeat_repository.Debian.path }}"
+  register: repostate
+  tags:
+  - aspects_topbeat
+  - aspects_topbeat_install
+
+- name: Add gpg key
+  when: repostate.stat is defined and repostate.stat.exists != True
+  apt_key:
+    url: "{{ aspects_topbeat_repository.Debian.key_url }}"
+  tags:
+  - aspects_topbeat
+  - aspects_topbeat_install
+
+- name: Add repo file
+  when: repostate.stat is defined and repostate.stat.exists != True
+  lineinfile:
+    state: present
+    dest: "{{ aspects_topbeat_repository.Debian.path }}"
+    owner: 0
+    group: 0
+    create: yes
+    line: "{{ aspects_topbeat_repository.Debian.value }}"
+  tags:
+  - aspects_topbeat
+  - aspects_topbeat_install
+
+- name: Install topbeat
+  apt:
+    pkg: "topbeat"
+    state: "present"
+    update_cache: "yes"
+  tags:
+  - aspects_topbeat
+  - aspects_topbeat_install

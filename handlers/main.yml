@@ -1,0 +1,19 @@
+---
+# handlers file for aspects_topbeat
+- name: restart topbeat
+  service: name=topbeat state=restarted enabled=yes
+  tags:
+  - aspects_topbeat
+  - aspects_topbeat_handlers
+
+- name: start topbeat
+  service: name=topbeat state=started enabled=yes
+  tags:
+  - aspects_topbeat
+  - aspects_topbeat_handlers
+
+- name: stop topbeat
+  service: name=topbeat state=stopped enabled=yes
+  tags:
+  - aspects_topbeat
+  - aspects_topbeat_handlers

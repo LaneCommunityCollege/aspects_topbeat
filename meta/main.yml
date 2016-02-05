@@ -1,0 +1,27 @@
+---
+galaxy_info:
+  author: David Reagan
+  description: Install and configure Elastic.co's topbeat process and system resources watcher.
+  company: Lane Community College
+  license: MIT
+  min_ansible_version: 1.9
+  platforms:
+  #- name: CentOS
+  #  versions:
+  #   - 6.5
+  - name: Ubuntu
+    versions:
+  #  - precise
+    - trusty
+  #- name: SLES
+  #  versions:
+  #  - all
+  #  - 10SP3
+  #  - 10SP4
+  #  - 11
+  #  - 11SP1
+  #  - 11SP2
+  #  - 11SP3
+  categories:
+  - system
+dependencies: []
