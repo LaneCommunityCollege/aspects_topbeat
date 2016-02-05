@@ -7,12 +7,12 @@ job_deploy_master:
     - master
   script:
     - |
-    ssh -t -t -o 'StrictHostKeyChecking no' -o 'PasswordAuthentication no' -o 'PubkeyAuthentication yes' -i '/home/gitlab_ci_multi_runner/.ssh/ansibleagent.key' ansibleagent@ws-prod-monitor-01.lanecc.edu <<EOF
-      cd /etc/ansible/roles/lanebook
-      git fetch origin
-      git reset --hard origin/master
-      git submodule update --init
-      exit
-    EOF
+      ssh -t -t -o 'StrictHostKeyChecking no' -o 'PasswordAuthentication no' -o 'PubkeyAuthentication yes' -i '/home/gitlab_ci_multi_runner/.ssh/ansibleagent.key' ansibleagent@ws-prod-monitor-01.lanecc.edu <<EOF
+        cd /etc/ansible/roles/lanebook
+        git fetch origin
+        git reset --hard origin/master
+        git submodule update --init
+        exit
+      EOF
   tags:
     - ansible
