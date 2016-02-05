@@ -1,0 +1,39 @@
+---
+- name: Check for repository
+  stat:
+    path: "{{ aspects_topbeat_repository.RedHat.path }}"
+  register: repostate
+  tags:
+  - aspects_topbeat
+  - aspects_topbeat_install
+
+- name: Add gpg key
+  when: repostate.stat is defined and repostate.stat.exists != True
+  rpm_key: 
+    state: present
+    key: "{{ aspects_topbeat_repository.RedHat.key_url }}"
+  tags:
+  - aspects_topbeat
+  - aspects_topbeat_install
+
+- name: Add repo file
+  when: repostate.stat is defined and repostate.stat.exists != True
+  lineinfile:
+    state: present
+    dest: "{{ aspects_topbeat_repository.RedHat.path }}"
+    owner: 0
+    group: 0
+    create: yes
+    line: "{{ aspects_topbeat_repository.RedHat.value }}"
+  tags:
+  - aspects_topbeat
+  - aspects_topbeat_install
+
+- name: Install topbeat
+  yum:
+    name: "topbeat"
+    state: "present"
+    update_cache: "yes"
+  tags:
+  - aspects_topbeat
+  - aspects_topbeat_install

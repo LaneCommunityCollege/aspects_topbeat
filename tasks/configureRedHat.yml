@@ -1,0 +1,13 @@
+---
+- name: Template config file
+  template:
+    src: "topbeat.yml.j2"
+    dest: "/etc/topbeat/topbeat.yml"
+    mode: "644"
+    owner: 0
+    group: 0
+  notify: restart topbeat
+  tags:
+  - aspects_topbeat
+  - aspects_topbeat_config
+  - aspects_topbeat_configure

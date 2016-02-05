@@ -14,3 +14,18 @@
   - aspects_topbeat_config
   - aspects_topbeat_configure
   - aspects_topbeat_configure_Debian
+
+- include: "installRedHat.yml"
+  when: ansible_os_family == "RedHat" and aspects_topbeat_install
+  tags:
+  - aspects_topbeat
+  - aspects_topbeat_install
+  - aspects_topbeat_install_RedHat
+
+- include: "configureRedHat.yml"
+  when: ansible_os_family == "RedHat" and aspects_topbeat_enabled
+  tags:
+  - aspects_topbeat
+  - aspects_topbeat_config
+  - aspects_topbeat_configure
+  - aspects_topbeat_configure_RedHat
