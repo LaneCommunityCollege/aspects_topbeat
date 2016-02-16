@@ -1,14 +1,21 @@
 # {{ ansible_managed }}
+{% if aspects_topbeat_input is defined %}
+  input:
+  {% for config in aspects_topbeat_input %}
+  {{ aspects_topbeat_input[config]|indent() }}
+  {% endfor %}
+{% endif %}
 
-output:
+  output:
 {% if aspects_topbeat_output.logstash is defined and aspects_topbeat_output.logstash != False %}
-  logstash:
-    {{ aspects_topbeat_output.logstash|indent() }}
+    logstash:
+      {{ aspects_topbeat_output.logstash }}
 {% endif %}
 {% if aspects_topbeat_output.elasticsearch is defined and aspects_topbeat_output.elasticsearch != False %}
   elasticsearch:
     {{ aspects_topbeat_output.elasticsearch|indent() }}
 {% endif %}
+
 {% if aspects_topbeat_shipper is defined and aspects_topbeat_shipper != False %}
 #shipper:
 #  name: {{ aspects_topbeat_shipper.name }}
@@ -29,6 +36,7 @@ output:
 #{% endif %}
 #{% if aspects_topbeat_logging is defined %}
 {% endif %}
+
 {% if aspects_topbeat_logging is defined and aspects_topbeat_logging != False %}
 #logging:
 #  to_syslog: {{ aspects_topbeat_logging.to_syslog|default(true) }}
