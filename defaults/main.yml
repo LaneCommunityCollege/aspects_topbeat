@@ -40,6 +40,8 @@ aspects_topbeat_outputs: {}
 #        - /path/to/topbeatCA.crt
 #    timeout: 15
 
-# aspects_topbeat_shipper: {}
+aspects_topbeat_shipper: 
+  tags: |
+    tags: ["topbeat"]
 
 # aspects_topbeat_logging: {}
