@@ -41,7 +41,6 @@ aspects_topbeat_outputs: {}
 #    timeout: 15
 
 aspects_topbeat_shipper: 
-  tags: |
-    tags: ["topbeat"]
+  tags: "['topbeat']"
 
 # aspects_topbeat_logging: {}
