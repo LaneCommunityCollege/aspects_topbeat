@@ -9,7 +9,7 @@ input:
 output:
 {% if aspects_topbeat_output.logstash is defined and aspects_topbeat_output.logstash != False %}
   logstash:
-    {{ aspects_topbeat_output.logstash }}
+    {{ aspects_topbeat_output.logstash|indent() }}
 {% endif %}
 {% if aspects_topbeat_output.elasticsearch is defined and aspects_topbeat_output.elasticsearch != False %}
   elasticsearch:
