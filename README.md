@@ -18,9 +18,6 @@ Remember that indenting is very important. So, make sure your blocks of text in 
 * aspects_topbeat_enabled
   * True or False. If True, actually use this role. If False, skip everything in this role.
   * Default: False
-* aspects_topbeat_use_repository
-  * True or False. If True, add the Beats package repository. If False, use the tar.gz file.
-  * Default: True
 * aspects_topbeat_install
   * True or False. If True, run installation tasks. If False, skip running installation tasks. The install<Debian|Redhat>.yml file.
   * Default: False

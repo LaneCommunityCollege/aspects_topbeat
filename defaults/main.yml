@@ -1,7 +1,6 @@
 ---
 # defaults file for aspects_topbeat
 aspects_topbeat_enabled: False
-aspects_use_repository: True
 aspects_topbeat_install: False
 aspects_topbeat_repository:
   Debian:
